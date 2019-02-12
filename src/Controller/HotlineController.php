@@ -19,7 +19,7 @@ class HotlineController extends AbstractController
      */
     function creationClientAction()
     {
-
+        return $this->render("/Hotline/creationclient.html.twig");
     }
 
     /**
@@ -27,7 +27,7 @@ class HotlineController extends AbstractController
      */
     function creationCourseAction()
     {
-
+        return $this->render("/Hotline/creationcourse.html.twig");
     }
 
     /**
@@ -35,7 +35,7 @@ class HotlineController extends AbstractController
      */
     function updateClientAction($idclient)
     {
-
+        return $this->render("/Hotline/updateclient.html.twig");
     }
 
     /**
@@ -43,7 +43,7 @@ class HotlineController extends AbstractController
      */
     function deleteClient($idclient)
     {
-
+        return $this->render("/Hotline/deleteclient.html.twig");
     }
 
     /**
@@ -51,7 +51,7 @@ class HotlineController extends AbstractController
      */
     function showOneClient($idclient)
     {
-
+        return $this->render("/Hotline/showoneclient.html.twig");
     }
 
     /**
@@ -59,6 +59,6 @@ class HotlineController extends AbstractController
      */
     function showAllClients()
     {
-
+        return $this->render("/Hotline/showallclients.html.twig");
     }
 }

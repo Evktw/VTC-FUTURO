@@ -37,53 +37,29 @@ class PermisExpiration
      */
     private $permisDateexpiration;
 
-    /**
-     * @return int
-     */
-    public function getIdEmploye(): int
+    public function getIdEmploye(): ?int
     {
         return $this->idEmploye;
     }
 
-    /**
-     * @param int $idEmploye
-     */
-    public function setIdEmploye(int $idEmploye): void
-    {
-        $this->idEmploye = $idEmploye;
-    }
-
-    /**
-     * @return int
-     */
-    public function getIdPermis(): int
+    public function getIdPermis(): ?int
     {
         return $this->idPermis;
     }
 
-    /**
-     * @param int $idPermis
-     */
-    public function setIdPermis(int $idPermis): void
-    {
-        $this->idPermis = $idPermis;
-    }
-
-    /**
-     * @return \DateTime
-     */
-    public function getPermisDateexpiration(): \DateTime
+    public function getPermisDateexpiration(): ?\DateTimeInterface
     {
         return $this->permisDateexpiration;
     }
 
-    /**
-     * @param \DateTime $permisDateexpiration
-     */
-    public function setPermisDateexpiration(\DateTime $permisDateexpiration): void
+    public function setPermisDateexpiration(\DateTimeInterface $permisDateexpiration): self
     {
         $this->permisDateexpiration = $permisDateexpiration;
+
+        return $this;
     }
+
+
 
 
 }

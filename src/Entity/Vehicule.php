@@ -56,101 +56,72 @@ class Vehicule
      */
     private $idEtatvehicule;
 
-    /**
-     * @return string
-     */
-    public function getVehiculeNumplaques(): string
+    public function getVehiculeNumplaques(): ?string
     {
         return $this->vehiculeNumplaques;
     }
 
-    /**
-     * @param string $vehiculeNumplaques
-     */
-    public function setVehiculeNumplaques(string $vehiculeNumplaques): void
-    {
-        $this->vehiculeNumplaques = $vehiculeNumplaques;
-    }
-
-    /**
-     * @return int
-     */
-    public function getVehiculeNbplaces(): int
+    public function getVehiculeNbplaces(): ?int
     {
         return $this->vehiculeNbplaces;
     }
 
-    /**
-     * @param int $vehiculeNbplaces
-     */
-    public function setVehiculeNbplaces(int $vehiculeNbplaces): void
+    public function setVehiculeNbplaces(int $vehiculeNbplaces): self
     {
         $this->vehiculeNbplaces = $vehiculeNbplaces;
+
+        return $this;
     }
 
-    /**
-     * @return int
-     */
-    public function getVehiculeNbkmrevision(): int
+    public function getVehiculeNbkmrevision(): ?int
     {
         return $this->vehiculeNbkmrevision;
     }
 
-    /**
-     * @param int $vehiculeNbkmrevision
-     */
-    public function setVehiculeNbkmrevision(int $vehiculeNbkmrevision): void
+    public function setVehiculeNbkmrevision(int $vehiculeNbkmrevision): self
     {
         $this->vehiculeNbkmrevision = $vehiculeNbkmrevision;
+
+        return $this;
     }
 
-    /**
-     * @return int
-     */
-    public function getVehiculeNbkmparcouru(): int
+    public function getVehiculeNbkmparcouru(): ?int
     {
         return $this->vehiculeNbkmparcouru;
     }
 
-    /**
-     * @param int $vehiculeNbkmparcouru
-     */
-    public function setVehiculeNbkmparcouru(int $vehiculeNbkmparcouru): void
+    public function setVehiculeNbkmparcouru(int $vehiculeNbkmparcouru): self
     {
         $this->vehiculeNbkmparcouru = $vehiculeNbkmparcouru;
+
+        return $this;
     }
 
-    /**
-     * @return int
-     */
-    public function getVehiculeTypeId(): int
+    public function getVehiculeTypeId(): ?int
     {
         return $this->vehiculeTypeId;
     }
 
-    /**
-     * @param int $vehiculeTypeId
-     */
-    public function setVehiculeTypeId(int $vehiculeTypeId): void
+    public function setVehiculeTypeId(int $vehiculeTypeId): self
     {
         $this->vehiculeTypeId = $vehiculeTypeId;
+
+        return $this;
     }
 
-    /**
-     * @return int
-     */
-    public function getIdEtatvehicule(): int
+    public function getIdEtatvehicule(): ?int
     {
         return $this->idEtatvehicule;
     }
 
-    /**
-     * @param int $idEtatvehicule
-     */
-    public function setIdEtatvehicule(int $idEtatvehicule): void
+    public function setIdEtatvehicule(int $idEtatvehicule): self
     {
         $this->idEtatvehicule = $idEtatvehicule;
+
+        return $this;
     }
+
+
 
 
 }

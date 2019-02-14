@@ -28,37 +28,23 @@ class PermisType
      */
     private $permisTypenom;
 
-    /**
-     * @return int
-     */
-    public function getIdPermis(): int
+    public function getIdPermis(): ?int
     {
         return $this->idPermis;
     }
 
-    /**
-     * @param int $idPermis
-     */
-    public function setIdPermis(int $idPermis): void
-    {
-        $this->idPermis = $idPermis;
-    }
-
-    /**
-     * @return string
-     */
-    public function getPermisTypenom(): string
+    public function getPermisTypenom(): ?string
     {
         return $this->permisTypenom;
     }
 
-    /**
-     * @param string $permisTypenom
-     */
-    public function setPermisTypenom(string $permisTypenom): void
+    public function setPermisTypenom(string $permisTypenom): self
     {
         $this->permisTypenom = $permisTypenom;
+
+        return $this;
     }
+
 
 
 }

@@ -124,229 +124,167 @@ class Course
      */
     private $idEmploye;
 
-    /**
-     * @return int
-     */
-    public function getCourseNumtransaction(): int
+    public function getCourseNumtransaction(): ?int
     {
         return $this->courseNumtransaction;
     }
 
-    /**
-     * @param int $courseNumtransaction
-     */
-    public function setCourseNumtransaction(int $courseNumtransaction): void
-    {
-        $this->courseNumtransaction = $courseNumtransaction;
-    }
-
-    /**
-     * @return int
-     */
-    public function getCourseNbpassagers(): int
+    public function getCourseNbpassagers(): ?int
     {
         return $this->courseNbpassagers;
     }
 
-    /**
-     * @param int $courseNbpassagers
-     */
-    public function setCourseNbpassagers(int $courseNbpassagers): void
+    public function setCourseNbpassagers(int $courseNbpassagers): self
     {
         $this->courseNbpassagers = $courseNbpassagers;
+
+        return $this;
     }
 
-    /**
-     * @return \DateTime
-     */
-    public function getCourseHeuredepart(): \DateTime
+    public function getCourseHeuredepart(): ?\DateTimeInterface
     {
         return $this->courseHeuredepart;
     }
 
-    /**
-     * @param \DateTime $courseHeuredepart
-     */
-    public function setCourseHeuredepart(\DateTime $courseHeuredepart): void
+    public function setCourseHeuredepart(\DateTimeInterface $courseHeuredepart): self
     {
         $this->courseHeuredepart = $courseHeuredepart;
+
+        return $this;
     }
 
-    /**
-     * @return \DateTime
-     */
-    public function getCourseHeurearrivee(): \DateTime
+    public function getCourseHeurearrivee(): ?\DateTimeInterface
     {
         return $this->courseHeurearrivee;
     }
 
-    /**
-     * @param \DateTime $courseHeurearrivee
-     */
-    public function setCourseHeurearrivee(\DateTime $courseHeurearrivee): void
+    public function setCourseHeurearrivee(\DateTimeInterface $courseHeurearrivee): self
     {
         $this->courseHeurearrivee = $courseHeurearrivee;
+
+        return $this;
     }
 
-    /**
-     * @return string
-     */
-    public function getCourseStatut(): string
+    public function getCourseStatut(): ?string
     {
         return $this->courseStatut;
     }
 
-    /**
-     * @param string $courseStatut
-     */
-    public function setCourseStatut(string $courseStatut): void
+    public function setCourseStatut(string $courseStatut): self
     {
         $this->courseStatut = $courseStatut;
+
+        return $this;
     }
 
-    /**
-     * @return float
-     */
-    public function getCoursePrix(): float
+    public function getCoursePrix(): ?float
     {
         return $this->coursePrix;
     }
 
-    /**
-     * @param float $coursePrix
-     */
-    public function setCoursePrix(float $coursePrix): void
+    public function setCoursePrix(float $coursePrix): self
     {
         $this->coursePrix = $coursePrix;
+
+        return $this;
     }
 
-    /**
-     * @return float
-     */
-    public function getCourseDistance(): float
+    public function getCourseDistance(): ?float
     {
         return $this->courseDistance;
     }
 
-    /**
-     * @param float $courseDistance
-     */
-    public function setCourseDistance(float $courseDistance): void
+    public function setCourseDistance(float $courseDistance): self
     {
         $this->courseDistance = $courseDistance;
+
+        return $this;
     }
 
-    /**
-     * @return string
-     */
-    public function getVehiculeNumplaques(): string
+    public function getVehiculeNumplaques(): ?string
     {
         return $this->vehiculeNumplaques;
     }
 
-    /**
-     * @param string $vehiculeNumplaques
-     */
-    public function setVehiculeNumplaques(string $vehiculeNumplaques): void
+    public function setVehiculeNumplaques(string $vehiculeNumplaques): self
     {
         $this->vehiculeNumplaques = $vehiculeNumplaques;
+
+        return $this;
     }
 
-    /**
-     * @return int
-     */
-    public function getIdAdressearrivee(): int
+    public function getIdAdressearrivee(): ?int
     {
         return $this->idAdressearrivee;
     }
 
-    /**
-     * @param int $idAdressearrivee
-     */
-    public function setIdAdressearrivee(int $idAdressearrivee): void
+    public function setIdAdressearrivee(int $idAdressearrivee): self
     {
         $this->idAdressearrivee = $idAdressearrivee;
+
+        return $this;
     }
 
-    /**
-     * @return int
-     */
-    public function getIdStatutcourse(): int
+    public function getIdStatutcourse(): ?int
     {
         return $this->idStatutcourse;
     }
 
-    /**
-     * @param int $idStatutcourse
-     */
-    public function setIdStatutcourse(int $idStatutcourse): void
+    public function setIdStatutcourse(int $idStatutcourse): self
     {
         $this->idStatutcourse = $idStatutcourse;
+
+        return $this;
     }
 
-    /**
-     * @return \Facture
-     */
-    public function getIdFacture(): \Facture
+    public function getIdFacture(): ?Facture
     {
         return $this->idFacture;
     }
 
-    /**
-     * @param \Facture $idFacture
-     */
-    public function setIdFacture(\Facture $idFacture): void
+    public function setIdFacture(?Facture $idFacture): self
     {
         $this->idFacture = $idFacture;
+
+        return $this;
     }
 
-    /**
-     * @return \Adresse
-     */
-    public function getIdAdressedepart(): \Adresse
+    public function getIdAdressedepart(): ?Adresse
     {
         return $this->idAdressedepart;
     }
 
-    /**
-     * @param \Adresse $idAdressedepart
-     */
-    public function setIdAdressedepart(\Adresse $idAdressedepart): void
+    public function setIdAdressedepart(?Adresse $idAdressedepart): self
     {
         $this->idAdressedepart = $idAdressedepart;
+
+        return $this;
     }
 
-    /**
-     * @return \Client
-     */
-    public function getIdClient(): \Client
+    public function getIdClient(): ?Client
     {
         return $this->idClient;
     }
 
-    /**
-     * @param \Client $idClient
-     */
-    public function setIdClient(\Client $idClient): void
+    public function setIdClient(?Client $idClient): self
     {
         $this->idClient = $idClient;
+
+        return $this;
     }
 
-    /**
-     * @return \Employes
-     */
-    public function getIdEmploye(): \Employes
+    public function getIdEmploye(): ?Employes
     {
         return $this->idEmploye;
     }
 
-    /**
-     * @param \Employes $idEmploye
-     */
-    public function setIdEmploye(\Employes $idEmploye): void
+    public function setIdEmploye(?Employes $idEmploye): self
     {
         $this->idEmploye = $idEmploye;
+
+        return $this;
     }
+
 
 
 

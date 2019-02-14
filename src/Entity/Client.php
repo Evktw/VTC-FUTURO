@@ -49,85 +49,60 @@ class Client
      */
     private $clientEmail;
 
-    /**
-     * @return int
-     */
-    public function getIdClient(): int
+    public function getIdClient(): ?int
     {
         return $this->idClient;
     }
 
-    /**
-     * @param int $idClient
-     */
-    public function setIdClient(int $idClient): void
-    {
-        $this->idClient = $idClient;
-    }
-
-    /**
-     * @return string
-     */
-    public function getClientNom(): string
+    public function getClientNom(): ?string
     {
         return $this->clientNom;
     }
 
-    /**
-     * @param string $clientNom
-     */
-    public function setClientNom(string $clientNom): void
+    public function setClientNom(string $clientNom): self
     {
         $this->clientNom = $clientNom;
+
+        return $this;
     }
 
-    /**
-     * @return string
-     */
-    public function getClientPrenom(): string
+    public function getClientPrenom(): ?string
     {
         return $this->clientPrenom;
     }
 
-    /**
-     * @param string $clientPrenom
-     */
-    public function setClientPrenom(string $clientPrenom): void
+    public function setClientPrenom(string $clientPrenom): self
     {
         $this->clientPrenom = $clientPrenom;
+
+        return $this;
     }
 
-    /**
-     * @return int
-     */
-    public function getClientTelephone(): int
+    public function getClientTelephone(): ?int
     {
         return $this->clientTelephone;
     }
 
-    /**
-     * @param int $clientTelephone
-     */
-    public function setClientTelephone(int $clientTelephone): void
+    public function setClientTelephone(int $clientTelephone): self
     {
         $this->clientTelephone = $clientTelephone;
+
+        return $this;
     }
 
-    /**
-     * @return string
-     */
-    public function getClientEmail(): string
+    public function getClientEmail(): ?string
     {
         return $this->clientEmail;
     }
 
-    /**
-     * @param string $clientEmail
-     */
-    public function setClientEmail(string $clientEmail): void
+    public function setClientEmail(string $clientEmail): self
     {
         $this->clientEmail = $clientEmail;
+
+        return $this;
     }
+
+
 
 
 

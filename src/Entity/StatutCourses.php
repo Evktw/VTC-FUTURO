@@ -28,37 +28,24 @@ class StatutCourses
      */
     private $statutNomcourse;
 
-    /**
-     * @return int
-     */
-    public function getIdStatutcourse(): int
+    public function getIdStatutcourse(): ?int
     {
         return $this->idStatutcourse;
     }
 
-    /**
-     * @param int $idStatutcourse
-     */
-    public function setIdStatutcourse(int $idStatutcourse): void
-    {
-        $this->idStatutcourse = $idStatutcourse;
-    }
-
-    /**
-     * @return string
-     */
-    public function getStatutNomcourse(): string
+    public function getStatutNomcourse(): ?string
     {
         return $this->statutNomcourse;
     }
 
-    /**
-     * @param string $statutNomcourse
-     */
-    public function setStatutNomcourse(string $statutNomcourse): void
+    public function setStatutNomcourse(string $statutNomcourse): self
     {
         $this->statutNomcourse = $statutNomcourse;
+
+        return $this;
     }
+
+
 
 
 }

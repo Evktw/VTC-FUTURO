@@ -35,53 +35,36 @@ class Facture
      */
     private $idEtatfacture;
 
-    /**
-     * @return int
-     */
-    public function getIdFacture(): int
+    public function getIdFacture(): ?int
     {
         return $this->idFacture;
     }
 
-    /**
-     * @param int $idFacture
-     */
-    public function setIdFacture(int $idFacture): void
-    {
-        $this->idFacture = $idFacture;
-    }
-
-    /**
-     * @return int
-     */
-    public function getCourseNumtransaction(): int
+    public function getCourseNumtransaction(): ?int
     {
         return $this->courseNumtransaction;
     }
 
-    /**
-     * @param int $courseNumtransaction
-     */
-    public function setCourseNumtransaction(int $courseNumtransaction): void
+    public function setCourseNumtransaction(int $courseNumtransaction): self
     {
         $this->courseNumtransaction = $courseNumtransaction;
+
+        return $this;
     }
 
-    /**
-     * @return int
-     */
-    public function getIdEtatfacture(): int
+    public function getIdEtatfacture(): ?int
     {
         return $this->idEtatfacture;
     }
 
-    /**
-     * @param int $idEtatfacture
-     */
-    public function setIdEtatfacture(int $idEtatfacture): void
+    public function setIdEtatfacture(int $idEtatfacture): self
     {
         $this->idEtatfacture = $idEtatfacture;
+
+        return $this;
     }
+
+
 
 
 }

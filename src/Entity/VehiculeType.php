@@ -28,37 +28,23 @@ class VehiculeType
      */
     private $vehiculeType;
 
-    /**
-     * @return int
-     */
-    public function getVehiculeTypeId(): int
+    public function getVehiculeTypeId(): ?int
     {
         return $this->vehiculeTypeId;
     }
 
-    /**
-     * @param int $vehiculeTypeId
-     */
-    public function setVehiculeTypeId(int $vehiculeTypeId): void
-    {
-        $this->vehiculeTypeId = $vehiculeTypeId;
-    }
-
-    /**
-     * @return string
-     */
-    public function getVehiculeType(): string
+    public function getVehiculeType(): ?string
     {
         return $this->vehiculeType;
     }
 
-    /**
-     * @param string $vehiculeType
-     */
-    public function setVehiculeType(string $vehiculeType): void
+    public function setVehiculeType(string $vehiculeType): self
     {
         $this->vehiculeType = $vehiculeType;
+
+        return $this;
     }
 
+    
 
 }

@@ -28,37 +28,24 @@ class EtatFacture
      */
     private $etatfactureNom;
 
-    /**
-     * @return int
-     */
-    public function getIdEtatfacture(): int
+    public function getIdEtatfacture(): ?int
     {
         return $this->idEtatfacture;
     }
 
-    /**
-     * @param int $idEtatfacture
-     */
-    public function setIdEtatfacture(int $idEtatfacture): void
-    {
-        $this->idEtatfacture = $idEtatfacture;
-    }
-
-    /**
-     * @return string
-     */
-    public function getEtatfactureNom(): string
+    public function getEtatfactureNom(): ?string
     {
         return $this->etatfactureNom;
     }
 
-    /**
-     * @param string $etatfactureNom
-     */
-    public function setEtatfactureNom(string $etatfactureNom): void
+    public function setEtatfactureNom(string $etatfactureNom): self
     {
         $this->etatfactureNom = $etatfactureNom;
+
+        return $this;
     }
+
+
 
 
 }

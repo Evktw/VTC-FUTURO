@@ -112,229 +112,168 @@ class Employes
      */
     private $idStatutemploye;
 
-    /**
-     * @return int
-     */
-    public function getIdEmploye(): int
+    public function getIdEmploye(): ?int
     {
         return $this->idEmploye;
     }
 
-    /**
-     * @param int $idEmploye
-     */
-    public function setIdEmploye(int $idEmploye): void
-    {
-        $this->idEmploye = $idEmploye;
-    }
-
-    /**
-     * @return string
-     */
-    public function getEmployeNom(): string
+    public function getEmployeNom(): ?string
     {
         return $this->employeNom;
     }
 
-    /**
-     * @param string $employeNom
-     */
-    public function setEmployeNom(string $employeNom): void
+    public function setEmployeNom(string $employeNom): self
     {
         $this->employeNom = $employeNom;
+
+        return $this;
     }
 
-    /**
-     * @return string
-     */
-    public function getEmployePrenom(): string
+    public function getEmployePrenom(): ?string
     {
         return $this->employePrenom;
     }
 
-    /**
-     * @param string $employePrenom
-     */
-    public function setEmployePrenom(string $employePrenom): void
+    public function setEmployePrenom(string $employePrenom): self
     {
         $this->employePrenom = $employePrenom;
+
+        return $this;
     }
 
-    /**
-     * @return int
-     */
-    public function getEmployeTelephone(): int
+    public function getEmployeTelephone(): ?int
     {
         return $this->employeTelephone;
     }
 
-    /**
-     * @param int $employeTelephone
-     */
-    public function setEmployeTelephone(int $employeTelephone): void
+    public function setEmployeTelephone(int $employeTelephone): self
     {
         $this->employeTelephone = $employeTelephone;
+
+        return $this;
     }
 
-    /**
-     * @return string
-     */
-    public function getEmployeMail(): string
+    public function getEmployeMail(): ?string
     {
         return $this->employeMail;
     }
 
-    /**
-     * @param string $employeMail
-     */
-    public function setEmployeMail(string $employeMail): void
+    public function setEmployeMail(string $employeMail): self
     {
         $this->employeMail = $employeMail;
+
+        return $this;
     }
 
-    /**
-     * @return string
-     */
-    public function getEmployeEtat(): string
+    public function getEmployeEtat(): ?string
     {
         return $this->employeEtat;
     }
 
-    /**
-     * @param string $employeEtat
-     */
-    public function setEmployeEtat(string $employeEtat): void
+    public function setEmployeEtat(string $employeEtat): self
     {
         $this->employeEtat = $employeEtat;
+
+        return $this;
     }
 
-    /**
-     * @return string
-     */
-    public function getEmployeLogin(): string
+    public function getEmployeLogin(): ?string
     {
         return $this->employeLogin;
     }
 
-    /**
-     * @param string $employeLogin
-     */
-    public function setEmployeLogin(string $employeLogin): void
+    public function setEmployeLogin(string $employeLogin): self
     {
         $this->employeLogin = $employeLogin;
+
+        return $this;
     }
 
-    /**
-     * @return string
-     */
-    public function getEmployeMdp(): string
+    public function getEmployeMdp(): ?string
     {
         return $this->employeMdp;
     }
 
-    /**
-     * @param string $employeMdp
-     */
-    public function setEmployeMdp(string $employeMdp): void
+    public function setEmployeMdp(string $employeMdp): self
     {
         $this->employeMdp = $employeMdp;
+
+        return $this;
     }
 
-    /**
-     * @return string
-     */
-    public function getEmployeAdresse(): string
+    public function getEmployeAdresse(): ?string
     {
         return $this->employeAdresse;
     }
 
-    /**
-     * @param string $employeAdresse
-     */
-    public function setEmployeAdresse(string $employeAdresse): void
+    public function setEmployeAdresse(string $employeAdresse): self
     {
         $this->employeAdresse = $employeAdresse;
+
+        return $this;
     }
 
-    /**
-     * @return int
-     */
-    public function getEmployeCp(): int
+    public function getEmployeCp(): ?int
     {
         return $this->employeCp;
     }
 
-    /**
-     * @param int $employeCp
-     */
-    public function setEmployeCp(int $employeCp): void
+    public function setEmployeCp(int $employeCp): self
     {
         $this->employeCp = $employeCp;
+
+        return $this;
     }
 
-    /**
-     * @return string
-     */
-    public function getEmployeVille(): string
+    public function getEmployeVille(): ?string
     {
         return $this->employeVille;
     }
 
-    /**
-     * @param string $employeVille
-     */
-    public function setEmployeVille(string $employeVille): void
+    public function setEmployeVille(string $employeVille): self
     {
         $this->employeVille = $employeVille;
+
+        return $this;
     }
 
-    /**
-     * @return string
-     */
-    public function getEmployeStatut(): string
+    public function getEmployeStatut(): ?string
     {
         return $this->employeStatut;
     }
 
-    /**
-     * @param string $employeStatut
-     */
-    public function setEmployeStatut(string $employeStatut): void
+    public function setEmployeStatut(string $employeStatut): self
     {
         $this->employeStatut = $employeStatut;
+
+        return $this;
     }
 
-    /**
-     * @return string
-     */
-    public function getRole(): string
+    public function getRole(): ?string
     {
         return $this->role;
     }
 
-    /**
-     * @param string $role
-     */
-    public function setRole(string $role): void
+    public function setRole(string $role): self
     {
         $this->role = $role;
+
+        return $this;
     }
 
-    /**
-     * @return int
-     */
-    public function getIdStatutemploye(): int
+    public function getIdStatutemploye(): ?int
     {
         return $this->idStatutemploye;
     }
 
-    /**
-     * @param int $idStatutemploye
-     */
-    public function setIdStatutemploye(int $idStatutemploye): void
+    public function setIdStatutemploye(int $idStatutemploye): self
     {
         $this->idStatutemploye = $idStatutemploye;
+
+        return $this;
     }
+
+
 
 
 }

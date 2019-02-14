@@ -42,68 +42,45 @@ class Adresse
      */
     private $adresseVille;
 
-    /**
-     * @return int
-     */
-    public function getIdAdresse(): int
+    public function getIdAdresse(): ?int
     {
         return $this->idAdresse;
     }
 
-    /**
-     * @param int $idAdresse
-     */
-    public function setIdAdresse(int $idAdresse): void
-    {
-        $this->idAdresse = $idAdresse;
-    }
-
-    /**
-     * @return string
-     */
-    public function getAdresseAdresse(): string
+    public function getAdresseAdresse(): ?string
     {
         return $this->adresseAdresse;
     }
 
-    /**
-     * @param string $adresseAdresse
-     */
-    public function setAdresseAdresse(string $adresseAdresse): void
+    public function setAdresseAdresse(string $adresseAdresse): self
     {
         $this->adresseAdresse = $adresseAdresse;
+
+        return $this;
     }
 
-    /**
-     * @return int
-     */
-    public function getAdresseCp(): int
+    public function getAdresseCp(): ?int
     {
         return $this->adresseCp;
     }
 
-    /**
-     * @param int $adresseCp
-     */
-    public function setAdresseCp(int $adresseCp): void
+    public function setAdresseCp(int $adresseCp): self
     {
         $this->adresseCp = $adresseCp;
+
+        return $this;
     }
 
-    /**
-     * @return string
-     */
-    public function getAdresseVille(): string
+    public function getAdresseVille(): ?string
     {
         return $this->adresseVille;
     }
 
-    /**
-     * @param string $adresseVille
-     */
-    public function setAdresseVille(string $adresseVille): void
+    public function setAdresseVille(string $adresseVille): self
     {
         $this->adresseVille = $adresseVille;
+
+        return $this;
     }
 
 

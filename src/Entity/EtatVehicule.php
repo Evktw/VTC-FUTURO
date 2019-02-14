@@ -28,37 +28,24 @@ class EtatVehicule
      */
     private $etatvehiculeNom;
 
-    /**
-     * @return int
-     */
-    public function getIdEtatvehicule(): int
+    public function getIdEtatvehicule(): ?int
     {
         return $this->idEtatvehicule;
     }
 
-    /**
-     * @param int $idEtatvehicule
-     */
-    public function setIdEtatvehicule(int $idEtatvehicule): void
-    {
-        $this->idEtatvehicule = $idEtatvehicule;
-    }
-
-    /**
-     * @return string
-     */
-    public function getEtatvehiculeNom(): string
+    public function getEtatvehiculeNom(): ?string
     {
         return $this->etatvehiculeNom;
     }
 
-    /**
-     * @param string $etatvehiculeNom
-     */
-    public function setEtatvehiculeNom(string $etatvehiculeNom): void
+    public function setEtatvehiculeNom(string $etatvehiculeNom): self
     {
         $this->etatvehiculeNom = $etatvehiculeNom;
+
+        return $this;
     }
+
+
 
 
 }

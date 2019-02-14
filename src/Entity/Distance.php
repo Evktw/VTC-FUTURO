@@ -37,53 +37,29 @@ class Distance
      */
     private $courseDistance;
 
-    /**
-     * @return int
-     */
-    public function getIdAdressedepart(): int
+    public function getIdAdressedepart(): ?int
     {
         return $this->idAdressedepart;
     }
 
-    /**
-     * @param int $idAdressedepart
-     */
-    public function setIdAdressedepart(int $idAdressedepart): void
-    {
-        $this->idAdressedepart = $idAdressedepart;
-    }
-
-    /**
-     * @return int
-     */
-    public function getIdAdressearrivee(): int
+    public function getIdAdressearrivee(): ?int
     {
         return $this->idAdressearrivee;
     }
 
-    /**
-     * @param int $idAdressearrivee
-     */
-    public function setIdAdressearrivee(int $idAdressearrivee): void
-    {
-        $this->idAdressearrivee = $idAdressearrivee;
-    }
-
-    /**
-     * @return float
-     */
-    public function getCourseDistance(): float
+    public function getCourseDistance(): ?float
     {
         return $this->courseDistance;
     }
 
-    /**
-     * @param float $courseDistance
-     */
-    public function setCourseDistance(float $courseDistance): void
+    public function setCourseDistance(float $courseDistance): self
     {
         $this->courseDistance = $courseDistance;
+
+        return $this;
     }
+
+
 
 
 

@@ -28,37 +28,24 @@ class StatutEmployes
      */
     private $statutNomemploye;
 
-    /**
-     * @return int
-     */
-    public function getIdStatutemploye(): int
+    public function getIdStatutemploye(): ?int
     {
         return $this->idStatutemploye;
     }
 
-    /**
-     * @param int $idStatutemploye
-     */
-    public function setIdStatutemploye(int $idStatutemploye): void
-    {
-        $this->idStatutemploye = $idStatutemploye;
-    }
-
-    /**
-     * @return string
-     */
-    public function getStatutNomemploye(): string
+    public function getStatutNomemploye(): ?string
     {
         return $this->statutNomemploye;
     }
 
-    /**
-     * @param string $statutNomemploye
-     */
-    public function setStatutNomemploye(string $statutNomemploye): void
+    public function setStatutNomemploye(string $statutNomemploye): self
     {
         $this->statutNomemploye = $statutNomemploye;
+
+        return $this;
     }
+
+
 
 
 }

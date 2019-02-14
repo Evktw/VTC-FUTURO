@@ -1,0 +1,42 @@
+{% for course in courses %}
+    <div class="border border-dark" style="background-color: ghostwhite;">
+        <div class="row">
+            <div id="intitule" class="col border border-light">
+                <p>
+                    <a class="btn btn-block border border-dark" style="background-color: darkslateblue; color: ghostwhite; font-family:'Freestyle Script'; font-size:32px;" href="/compta/course/{{ course.id }}">Course du{{ course.getCreatedAt()|date('m/d/Y') }} - {{ course.client.nom }}</a>
+                </p>
+            </div>
+            <div id = "statutFacture" class="col border border-light">
+                {% if course.facture.statut == sent %}
+                    <p style="margin-left: 16px;"><span><p>Icone Verte</p>
+                {% else %}
+                    <p style="margin-left: 16px;"><span><p>Icone Rouge</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    <br><br>
+{% endfor %}
+{% if nbTotalPages > 1 %}
+    <div style="color:black; background-color:#e3f2fd;"> Pages :
+        {% for n  in 1..nbTotalPages %}
+            {# Si n est la page courante #}
+            {%  if n == num %}
+                {% if n == nbTotalPages %}
+                    <button class="btn" style ="color:blue; background-color:#e3f2fd;">{{ n }}</button>
+                {% else %}
+                    <button class="btn" style ="color:blue; background-color:#e3f2fd;"> {{ n }}</button>
+                    /
+                {% endif %}
+            {% endif %}
+
+            {# Si n n'est pas la page courante #}
+            {%  if n != num %}
+                <a class="btn" style ="color:black; background-color:#e3f2fd;" href="{{ path('Retour aux Courses', {'numpage' : n}) }}">{{ n }}</a>
+                {%  if n != nbTotalPages %}
+                    /
+                {% endif %}
+            {% endif %}
+        {% endfor %}
+    </div>
+{% endif %}

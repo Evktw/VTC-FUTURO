@@ -30,15 +30,16 @@ class ComptaController extends AbstractController{
 
     /**
      * @Route(
-     *     "/view-facture/{id]
+     *     "/view-facture/{id]",
      *     requirements={"id" : "^[1-9]+[0-9]*"},
      *     name="Vue-Facture"
+     * )
      *
      * @throws \Doctrine\ORM\NonUniqueResultException
      */
     public function ViewFactureAction($id){
         $em = $this->getDoctrine()->getManager();
-        $facture = $em->getRepository('BE:Facture')->findFactureByID($id);
+        $facture = $em->getRepository('App:Facture')->getFactureByID($id);
         if(!$facture)
         {
             throw new NotFoundHttpException("Erreur lors de la récupération de la facture $id");

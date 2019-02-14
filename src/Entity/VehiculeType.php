@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * VehiculeType
  *
  * @ORM\Table(name="Vehicule_Type")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="App\Repository\VehiculeTypeRepository")
  */
 class VehiculeType
 {
@@ -60,5 +60,5 @@ class VehiculeType
         $this->vehiculeType = $vehiculeType;
     }
 
-    
+
 }

@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * PermisType
  *
  * @ORM\Table(name="Permis_Type")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="App\Repository\PermisTypeRepository")
  */
 class PermisType
 {

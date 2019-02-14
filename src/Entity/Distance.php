@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Distance
  *
  * @ORM\Table(name="Distance")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="App\Repository\DistanceRepository")
  */
 class Distance
 {

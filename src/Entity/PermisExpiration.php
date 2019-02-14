@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * PermisExpiration
  *
  * @ORM\Table(name="Permis_expiration")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="App\Repository\PermisExpirationRepository")
  */
 class PermisExpiration
 {

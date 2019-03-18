@@ -1,0 +1,31 @@
+{% extends 'Chauffeur/base.html.twig' %}
+
+{% block body %}
+
+    <div class="wrapper fadeInDown">
+        <div id="formContent">
+            <!-- Tabs Titles -->
+
+            <!-- Icon -->
+            <div class="fadeIn first">
+                <img src="{{ asset('assets/images/Logo_VTC.png') }}" id="icon" alt="User Icon" />
+            </div>
+
+            <!-- Login Form -->
+            <form>
+                <input type="text" id="login" class="fadeIn second" name="login" placeholder="Identifiant">
+                <input type="password" id="password" class="fadeIn third" name="login" placeholder="Mot de passe">
+                <input type="submit" class="fadeIn fourth" value="Connexion">
+            </form>
+
+            <!-- Remind Passowrd -->
+            <div>
+                <a class="underlineHover" href="#">Mot de passe oublié?</a>
+            </div>
+
+        </div>
+    </div>
+
+
+
+{% endblock %}

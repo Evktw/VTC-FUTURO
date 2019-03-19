@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Facture;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -25,7 +26,10 @@ class ComptaController extends AbstractController{
      * )
      */
     public function comptaAction(){
-        return $this-> render('Compta/index.html.twig');
+        $em = $this->getDoctrine()->getManager();
+        $courses = $em->getRepository('App:Course')->findAll();
+        $nbTotalPages = count($courses)/10;
+        return $this-> render('Compta/index.html.twig', ['courses' => $courses, 'nbTotalPages' =>$nbTotalPages]);
     }
 
     /**
@@ -39,7 +43,7 @@ class ComptaController extends AbstractController{
      */
     public function ViewFactureAction($id){
         $em = $this->getDoctrine()->getManager();
-        $facture = $em->getRepository('App:Facture')->getFactureByID($id);
+        $facture = $em->getRepository('App:Facture')->findOneBy($id);
         if(!$facture)
         {
             throw new NotFoundHttpException("Erreur lors de la récupération de la facture $id");

@@ -1,0 +1,26 @@
+{%  if id > 0%}
+<div class="border border-dark" style="background-color: ghostwhite;">
+        <div class="row">
+            <div id="intitule" class="col border border-light">
+                <p>
+                    <a class="btn btn-block border border-dark" style="background-color: darkslateblue; color: ghostwhite; font-family:'Freestyle Script'; font-size:32px;" href="/compta/facture/{{ facture.id }}">Facture n° {{ facture.id }}</a>
+                </p>
+            </div>
+            <div id="NumTransac" class="col border border-light">
+                <p>{{ facture.courseNumtransaction }}</p>
+            </div>
+            <div id="Montant" class="col border border-light">
+                <textarea> " " </textarea>
+            </div>
+            <div id="Devise" class="col border border-light">
+                <p>" € "</p>
+            </div>
+        </div>
+</div>
+{% else %}
+<div class="border border-dark" style="background-color: ghostwhite;">
+    <div class="row">
+        <p> Facture n° {{ facture.id }} Inexistante </p>
+    </div>
+</div>
+{% endif %}

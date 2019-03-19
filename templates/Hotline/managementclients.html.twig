@@ -1,0 +1,19 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+
+    <a href="{{ path('showAllClients') }}"> Show all clients </a>
+    <br/>
+    <a href="{{ path('showClient',{'idclient' : 1}) }}"> Show one client (client 1 for the example) </a>
+    <br/>
+    <a href="{{ path('creationClient') }}"> Creation of 1 client </a>
+    <br/>
+    <a href="{{ path('updateClient',{'idclient' : 1}) }}"> Update the client (client 1 for the example) </a>
+    <br/>
+    <a href="{{ path('deleteClient',{'idclient' : 1}) }}"> Delete the client (client 1 for the example) </a>
+
+
+
+
+
+{% endblock %}

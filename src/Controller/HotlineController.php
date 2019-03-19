@@ -1,15 +1,10 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: kmessmer
- * Date: 11/02/2019
- * Time: 16:58
- */
 
 namespace App\Controller;
 
 
 use App\Entity\Client;
+use App\Entity\Course;
 use App\Forms\ClientType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -53,20 +48,12 @@ class HotlineController extends AbstractController
     }
 
     /**
-     * @Route("/creation-course", name="creationCourse")
-     */
-    function creationCourseAction()
-    {
-        return $this->render("/Hotline/creationcourse.html.twig");
-    }
-
-    /**
-     * @Route("/update-client/{id}", requirements={"id" : "\d+"}, name="updateClient")
+     * @Route("/update-client/{idclient}", requirements={"idclient" : "\d+"}, name="updateClient")
      */
     function updateClientAction($idclient, Request $request)
     {
         $em = $this->getDoctrine()->getManager();
-        $client = $em->getRepository('App:Client')->findOneBy(array('id' => $idclient));
+        $client = $em->getRepository('App:Client')->findOneBy(array('idClient' => $idclient));
 
         $form = $this->createForm(ClientType::class, $client);
         $form->add('Modifier', SubmitType::class, ['label'=>'Modifier Client']);
@@ -84,20 +71,29 @@ class HotlineController extends AbstractController
                 $this->addFlash('info',"Erreur lors de la modifications");
             }
 
-            return $this->redirectToRoute('showClient', array('id' => $idclient));
+            return $this->redirectToRoute('showClient', array('idclient' => $idclient));
 
         }
 
-        return $this->render("/Hotline/updateclient.html.twig");
+        return $this->render("/Hotline/updateclient.html.twig",array('id' => $idclient, 'form' => $form->createView()));
     }
 
     /**
-     * @Route("/delete-client/{id}", requirements={"id" : "\d+"}, name="deleteClient")
+     * @Route("/delete-client/{idclient}", requirements={"idclient" : "\d+"}, name="deleteClient")
      */
     function deleteClientAction($idclient)
     {
         $em = $this->getDoctrine()->getManager();
-        $client = $em->getRepository('App:Client')->findOneBy(array('id' => $idclient));
+        $client = $em->getRepository('App:Client')->findOneBy(array('idClient' => $idclient));
+
+        $courseClient = $em->getRepository('App:Course')->findAllCoursesForAClient($idclient);
+
+        foreach($courseClient as $course)
+        {
+            $em->remove($course);
+        }
+
+        $em->flush();
 
         if(!$client)
         {
@@ -115,19 +111,19 @@ class HotlineController extends AbstractController
     }
 
     /**
-     * @Route("/show-client/{id}", requirements={"id" : "\d+"}, name="showClient")
+     * @Route("/show-client/{idclient}", requirements={"idclient" : "\d+"}, name="showClient")
      */
     function showOneClientAction($idclient)
     {
         $em = $this->getDoctrine()->getManager();
-        $client = $em->getRepository('App:Client')->findOneBy($idclient);
+        $client = $em->getRepository('App:Client')->findOneBy(array('idClient' => $idclient));
 
         if(!$client)
         {
             throw $this->createNotFoundException("Pas de client correspondant à cette ID");
         }
 
-        return $this->render("/Hotline/showoneclient.html.twig", array('id'=>$idclient));
+        return $this->render("/Hotline/showoneclient.html.twig", array('client'=>$client));
     }
 
     /**
@@ -135,6 +131,55 @@ class HotlineController extends AbstractController
      */
     function showAllClientsAction()
     {
-        return $this->render("/Hotline/showallclients.html.twig");
+        $em = $this->getDoctrine()->getManager();
+        $allclients = $em->getRepository('App:Client')->findAll();
+
+
+        return $this->render("/Hotline/showallclients.html.twig",array('clients' => $allclients));
     }
+
+    /**
+     *  @Route("/management-clients", name="managementClients")
+     */
+    function managementClientsAction()
+    {
+        return $this->render("/Hotline/managementclients.html.twig");
+    }
+
+    /**
+     * @Route("/creation-course", name="creationCourse")
+     */
+    function creationCourseAction(Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $course = new Course();
+
+        $form = $this->createForm(ClientType::class, $course);
+        $form->add('Ajouter',SubmitType::class, ['label'=>'Ajouter Course']);
+
+        $form->handleRequest($request);
+
+        if($form -> isSubmitted() && $form->isValid())
+        {
+            try
+            {
+                $em->persist($course);
+                $em->flush();
+                $this->addFlash('info',"Course bien ajouté");
+            }
+            catch(\Exception $exceptionajout)
+            {
+                $this->addFlash('info',"Erreur lors de l'ajout");
+            }
+
+            return $this->redirectToRoute('creationCourse');
+        }
+
+        return $this->render("/Hotline/creationcourse.html.twig", array('form' => $form->createView()));
+    }
+
+
+
+
 }

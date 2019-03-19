@@ -48,7 +48,28 @@ class Client
      * @ORM\Column(name="Client_Email", type="string", length=50, nullable=false)
      */
     private $clientEmail;
+/*
+    /**
+     * @var Course
+     *
+     * @ORM\ManyToOne(targetEntity="Course", inversedBy="Course")
+     * @ORM\JoinColumn(name="category_id", referencedColumnName="Course_NumTransaction")
+     */
+/*
+    private $clientCourse;
 
+    public function getClientCourse() : ?Course
+    {
+        return $this->getClientCourse();
+    }
+
+    public function setClientCourse(Course $clientCourse) : self
+    {
+        $this->clientCourse = $clientCourse;
+
+        return $this;
+    }
+*/
     public function getIdClient(): ?int
     {
         return $this->idClient;

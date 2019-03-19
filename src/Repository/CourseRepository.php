@@ -19,6 +19,16 @@ class CourseRepository extends ServiceEntityRepository
         parent::__construct($registry, Course::class);
     }
 
+    public function findAllCoursesForAClient($idClient)
+    {
+        return $this->createQueryBuilder('c')
+            ->setParameter('idclient', $idClient)
+            ->where('c.idClient = :idclient')
+            ->getQuery()
+            ->getResult();
+    }
+
+
     // /**
     //  * @return Course[] Returns an array of Course objects
     //  */

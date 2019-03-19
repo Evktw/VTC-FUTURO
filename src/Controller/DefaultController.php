@@ -14,7 +14,9 @@ class DefaultController extends AbstractController
 
         //$locale = $request->getLocale();
         $em = $this->getDoctrine()->getManager();
-        $lesEmployes = $em->getRepository('App:Employes')->findAll();
-        return $this->render('hello_world.html.twig',array('lesEmployes' => $lesEmployes));
+        //$lesEmployes = $em->getRepository('App:Employes')->findAll();
+        //return $this->render('hello_world.html.twig',array('lesEmployes' => $lesEmployes));
+
+        return new Response('<body>Hello World !</body>');
     }
 }

@@ -31,14 +31,14 @@ class Course
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="Course_HeureDepart", type="date", nullable=false)
+     * @ORM\Column(name="Course_HeureDepart", type="datetime", nullable=false)
      */
     private $courseHeuredepart;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="Course_HeureArrivee", type="date", nullable=false)
+     * @ORM\Column(name="Course_HeureArrivee", type="datetime", nullable=false)
      */
     private $courseHeurearrivee;
 
@@ -123,7 +123,27 @@ class Course
      * })
      */
     private $idEmploye;
+/*
+    /**
+     * @var Client
+     *
+     * @ORM\OneToMany(targetEntity="Client", mappedBy="Client")
+     */
+/*
+    private $courseClient;
 
+    public function getCourseClient() : ?Client
+    {
+        return $this->courseClient;
+    }
+
+    public function setCourseClient(Client $courseClient) : self
+    {
+        $this->courseClient = $courseClient;
+
+        return $this;
+    }
+*/
     public function getCourseNumtransaction(): ?int
     {
         return $this->courseNumtransaction;

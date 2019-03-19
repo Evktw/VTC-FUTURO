@@ -1,1 +1,15 @@
-{% extends "base.html" %}
+{% extends "base.html.twig" %}
+
+{% block body %}
+
+    ID CLIENT : {{ client.idClient }}
+    <br/>
+    NOM CLIENT : {{ client.clientNom }}
+    <br/>
+    PRENOM CLIENT : {{ client.clientPrenom }}
+    <br/>
+    TELEPHONE CLIENT : {{ client.clientTelephone }}
+    <br/>
+    EMAIL CLIENT : {{ client.clientEmail }}
+
+{% endblock %}

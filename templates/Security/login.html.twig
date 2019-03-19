@@ -1,0 +1,33 @@
+{% extends 'Security/base.html.twig' %}
+
+{% block body %}
+    {% if error %}
+        <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+    {% endif %}
+    <div class="wrapper fadeInDown">
+        <div id="formContent">
+            <!-- Tabs Titles -->
+
+            <!-- Icon -->
+            <div class="fadeIn first">
+                <img src="{{ asset('assets/images/Logo_VTC.png') }}" id="icon" alt="User Icon" />
+            </div>
+
+            <!-- Login Form -->
+            <form action="{{ path('app_login_check') }}" method="post">
+                <input type="text" id="username" class="fadeIn second" name="_username" placeholder="Identifiant">
+                <input type="password" id="password" class="fadeIn third" name="_password" placeholder="Mot de passe">
+                <input type="submit" class="fadeIn fourth" value="Connexion">
+            </form>
+
+            <!-- Remind Passowrd -->
+            <div>
+                <a class="underlineHover" href="#">Mot de passe oublié?</a>
+            </div>
+
+        </div>
+    </div>
+
+
+
+{% endblock %}

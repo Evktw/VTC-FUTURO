@@ -27,16 +27,18 @@ class ComptaController extends AbstractController{
     public function comptaAction(){
         return $this-> render('Compta/index.html.twig');
     }
-
+/*
     /**
      * @Route(
-     *     "/view-facture/{id]
+     *     "/view-facture/{id}
      *     requirements={"id" : "^[1-9]+[0-9]*"},
      *     name="Vue-Facture"
      *
      * @throws \Doctrine\ORM\NonUniqueResultException
      */
-    public function ViewFactureAction($id){
+/*
+    public function ViewFactureAction($id)
+    {
         $em = $this->getDoctrine()->getManager();
         $facture = $em->getRepository('BE:Facture')->findFactureByID($id);
         if(!$facture)
@@ -47,5 +49,5 @@ class ComptaController extends AbstractController{
             return $this->render('Compta/facture.html.twig', ['idFacture' => $id, 'facture' => $facture]);
         }
     }
-
+*/
 }

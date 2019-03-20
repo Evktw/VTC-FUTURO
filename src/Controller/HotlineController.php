@@ -3,9 +3,12 @@
 namespace App\Controller;
 
 
+use App\Entity\Adresse;
 use App\Entity\Client;
 use App\Entity\Course;
+use App\Forms\AdresseType;
 use App\Forms\ClientType;
+use App\Forms\CourseType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\Request;
@@ -149,13 +152,18 @@ class HotlineController extends AbstractController
     /**
      * @Route("/creation-course", name="creationCourse")
      */
+    /*
     function creationCourseAction(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
 
         $course = new Course();
+        $adresseDepart = new Adresse();
+        $adresseArrivee = new Adresse();
 
-        $form = $this->createForm(ClientType::class, $course);
+        $form = $this->createForm(AdresseType::class, $adresseDepart);
+        $form->add($this->createForm(AdresseType::class), $adresseArrivee);
+
         $form->add('Ajouter',SubmitType::class, ['label'=>'Ajouter Course']);
 
         $form->handleRequest($request);
@@ -179,7 +187,7 @@ class HotlineController extends AbstractController
         return $this->render("/Hotline/creationcourse.html.twig", array('form' => $form->createView()));
     }
 
-
+    */
 
 
 }

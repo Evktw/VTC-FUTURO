@@ -15,7 +15,13 @@
             <a class="nav-link active" href="{{ url('accueilConnection') }}">Accueil</a>
             <a class="nav-link my-2 my-lg-0" href="{{ url('app_logout') }}">Déconnection</a>
         </nav>
-        {% block body %}{% endblock %}
+        <div class="container-fluid">
+            {% for msg in app.session.flashBag.get('info') %}
+                <br/><div class="alert alert-success" role="alert">{{ msg }}</div>
+            {% endfor %}
+            {% block body %}{% endblock %}
+        </div>
+
         {% block javascripts %}{% endblock %}
     </body>
 </html>

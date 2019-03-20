@@ -5,15 +5,86 @@
 {{ form_errors(form) }}
 {# Affiche les erreurs globales du formulaire #}
 
-    {{ form_row(form.employeNom) }}
-    {{ form_row(form.employePrenom) }}
-    {{ form_row(form.employeTelephone) }}
-    {{ form_row(form.employeMail) }}
-    {{ form_row(form.login) }}
-    {{ form_row(form.employeMdp) }}
-    {{ form_row(form.employeAdresse) }}
-    {{ form_row(form.employeCp) }}
-    {{ form_row(form.employeVille) }}
+    <div class="form-row">
+        <div class="col-6">
+            {{ form_label(form.employeNom) }}
+            {{ form_errors(form.employeNom) }}
+            <div class="input-group">
+                <span class="input-group-text"  id="inputGroupPrepend"> <i class="fa fa-user"></i></span>
+                {{ form_widget(form.employeNom) }}
+            </div>
+        </div>
+        <div class="col-6">
+            {{ form_label(form.employePrenom) }}
+            {{ form_errors(form.employePrenom) }}
+            <div class="input-group">
+                <span class="input-group-text"  id="inputGroupPrepend"> <i class="fa fa-user"></i></span>
+                {{ form_widget(form.employePrenom) }}
+            </div>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="col-6">
+            {{ form_label(form.employeTelephone) }}
+            {{ form_errors(form.employeTelephone) }}
+            <div class="input-group">
+                <span class="input-group-text"  id="inputGroupPrepend"> <i class="fa fa-phone"></i></span>
+                {{ form_widget(form.employeTelephone) }}
+            </div>
+        </div>
+        <div class="col-6">
+            {{ form_label(form.employeMail) }}
+            {{ form_errors(form.employeMail) }}
+            <div class="input-group">
+                <span class="input-group-text"  id="inputGroupPrepend"> <i class="fa fa-at"></i></span>
+                {{ form_widget(form.employeMail) }}
+            </div>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="col-6">
+            {{ form_label(form.login) }}
+            {{ form_errors(form.login) }}
+            <div class="input-group">
+                <span class="input-group-text"  id="inputGroupPrepend"> <i class="fa fa-user-circle"></i></span>
+                {{ form_widget(form.login) }}
+            </div>
+        </div>
+        <div class="col-6">
+            {{ form_label(form.employeMdp) }}
+            {{ form_errors(form.employeMdp) }}
+            <div class="input-group">
+                <span class="input-group-text"  id="inputGroupPrepend"> <i class="fa fa-lock"></i></span>
+                {{ form_widget(form.employeMdp) }}
+            </div>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="col-4">
+            {{ form_label(form.employeAdresse) }}
+            {{ form_errors(form.employeAdresse) }}
+            <div class="input-group">
+                <span class="input-group-text"  id="inputGroupPrepend"> <i class="fa fa-address-card"></i></span>
+                {{ form_widget(form.employeAdresse) }}
+            </div>
+        </div>
+        <div class="col-4">
+            {{ form_label(form.employeCp) }}
+            {{ form_errors(form.employeCp) }}
+            <div class="input-group">
+                <span class="input-group-text"  id="inputGroupPrepend"> <i class="fa fa-address-card"></i></span>
+                {{ form_widget(form.employeCp) }}
+            </div>
+        </div>
+        <div class="col-4">
+            {{ form_label(form.employeVille) }}
+            {{ form_errors(form.employeVille) }}
+            <div class="input-group">
+                <span class="input-group-text"  id="inputGroupPrepend"> <i class="fa fa-address-card"></i></span>
+                {{ form_widget(form.employeVille) }}
+            </div>
+        </div>
+    </div>
     {{ form_row(form.roles) }}
     {{ form_row(form.StatutEmploye) }}
 

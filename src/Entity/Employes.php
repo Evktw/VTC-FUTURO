@@ -104,7 +104,7 @@ class Employes implements UserInterface, \Serializable
     /**
      * @return int
      */
-    public function getIdEmploye(): int
+    public function getIdEmploye(): ?int
     {
         return $this->idEmploye;
     }

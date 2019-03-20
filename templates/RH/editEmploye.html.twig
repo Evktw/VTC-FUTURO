@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    </br>
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{{ url('listEmploye') }}">Liste des employés</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Modifier</li>
+        </ol>
+    </nav>
+    </br>
+    <div class="card">
+        <div class="card-body">
+            {{ include('form/employe.html.twig') }}
+        </div>
+    </div>
+{% endblock %}

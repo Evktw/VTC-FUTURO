@@ -38,7 +38,7 @@ class RhController extends AbstractController
         $employe = new Employes();
 
         $form = $this->createForm(EmployesType::class, $employe);
-        $form->add('send', SubmitType::class, ['label' =>'Add']);
+        $form->add('send', SubmitType::class, ['label' =>'Ajouter']);
         $form->handleRequest($request);
 
         if($form->isSubmitted() && $form->isValid() ) {
@@ -51,7 +51,7 @@ class RhController extends AbstractController
             $em->flush();
 
             $this->addFlash('info', "Employe ajouté");
-            return $this->redirectToRoute('/');
+            return $this->redirectToRoute('accueilConnection');
         }
 
         return $this->render('RH/addEmploye.html.twig',array('form' => $form->createView()));
@@ -77,6 +77,46 @@ class RhController extends AbstractController
         $Employe = $em->getRepository("App:Employes")->find($id);
 
         return $this->render('RH/viewEmploye.html.twig',array('Employe' => $Employe));
+    }
+
+    /**
+     * @Route("/editEmploye/{id}", requirements={"id": "\d+"}, name="editEmploye")
+     */
+    public function editEmployeAction($id,Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $employe = $em->getRepository("App:Employes")->find($id);
+
+        $form = $this->createForm(EmployesType::class, $employe);
+        $form->add('send', SubmitType::class, ['label' =>'Modifier']);
+        $form->handleRequest($request);
+
+        if($form->isSubmitted() && $form->isValid() ) {
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($employe);
+            $em->flush();
+
+            $this->addFlash('info', "Employe modifié");
+            return $this->redirectToRoute('viewEmploye', array('id' => $id));
+        }
+
+        return $this->render('RH/editEmploye.html.twig',array('form' => $form->createView()));
+    }
+
+    /**
+     * @Route("deleteEmploye/{id}", name="deleteEmploye")
+     *
+     */
+    public function deleteEmployeAction($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $employe = $em->getRepository("App:Employes")->find($id);
+        if($employe) {
+            $em->remove($employe);
+            $em->flush();
+        }
+        $this->addFlash('info', "Employé supprimé");
+        return $this->redirectToRoute('listEmploye');
     }
 
 }

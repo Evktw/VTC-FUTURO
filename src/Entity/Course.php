@@ -31,14 +31,14 @@ class Course
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="Course_HeureDepart", type="date", nullable=false)
+     * @ORM\Column(name="Course_HeureDepart", type="datetime", nullable=false)
      */
     private $courseHeuredepart;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="Course_HeureArrivee", type="date", nullable=false)
+     * @ORM\Column(name="Course_HeureArrivee", type="datetime", nullable=false)
      */
     private $courseHeurearrivee;
 

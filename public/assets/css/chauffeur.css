@@ -240,3 +240,11 @@ input[type=text]:placeholder , input[type=password]:placeholder{
 #icon {
     width:60%;
 }
+
+#validerCourse {
+    background-color: slategray
+}
+
+#validerCourse:hover {
+    background-color: rgba(85, 100, 116, 0.71)
+}

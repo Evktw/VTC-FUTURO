@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * Employes
@@ -10,7 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="Employes")
  * @ORM\Entity(repositoryClass="App\Repository\EmployesRepository")
  */
-class Employes
+class Employes implements UserInterface, \Serializable
 {
     /**
      * @var int
@@ -49,12 +50,6 @@ class Employes
      */
     private $employeMail;
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="Employe_Etat", type="string", length=50, nullable=false)
-     */
-    private $employeEtat;
 
     /**
      * @var string
@@ -92,188 +87,281 @@ class Employes
     private $employeVille;
 
     /**
-     * @var string
+     * @var array
      *
-     * @ORM\Column(name="Employe_Statut", type="string", length=50, nullable=false)
+     * @ORM\Column(name="Roles", type="json", nullable=false)
      */
-    private $employeStatut;
+    private $roles;
 
     /**
-     * @var string
+     * @var StatutEmployes
      *
-     * @ORM\Column(name="Role", type="text", length=65535, nullable=false)
+     * @ORM\OneToOne(targetEntity="StatutEmployes",cascade={"persist"})
+     * @ORM\JoinColumn(name="ID_StatutEmploye", referencedColumnName="ID_StatutEmploye")
      */
-    private $role;
+    private $StatutEmploye;
 
     /**
-     * @var int
-     *
-     * @ORM\Column(name="ID_StatutEmploye", type="integer", nullable=false)
+     * @return int
      */
-    private $idStatutemploye;
-
-    public function getIdEmploye(): ?int
+    public function getIdEmploye(): int
     {
         return $this->idEmploye;
     }
 
+    /**
+     * @param int $idEmploye
+     */
+    public function setIdEmploye(int $idEmploye): void
+    {
+        $this->idEmploye = $idEmploye;
+    }
+
+    /**
+     * @return string
+     */
     public function getEmployeNom(): ?string
     {
         return $this->employeNom;
     }
 
-    public function setEmployeNom(string $employeNom): self
+    /**
+     * @param string $employeNom
+     */
+    public function setEmployeNom(string $employeNom): void
     {
         $this->employeNom = $employeNom;
-
-        return $this;
     }
 
+    /**
+     * @return string
+     */
     public function getEmployePrenom(): ?string
     {
         return $this->employePrenom;
     }
 
-    public function setEmployePrenom(string $employePrenom): self
+    /**
+     * @param string $employePrenom
+     */
+    public function setEmployePrenom(string $employePrenom): void
     {
         $this->employePrenom = $employePrenom;
-
-        return $this;
     }
 
+    /**
+     * @return int
+     */
     public function getEmployeTelephone(): ?int
     {
         return $this->employeTelephone;
     }
 
-    public function setEmployeTelephone(int $employeTelephone): self
+    /**
+     * @param int $employeTelephone
+     */
+    public function setEmployeTelephone(int $employeTelephone): void
     {
         $this->employeTelephone = $employeTelephone;
-
-        return $this;
     }
 
+    /**
+     * @return string
+     */
     public function getEmployeMail(): ?string
     {
         return $this->employeMail;
     }
 
-    public function setEmployeMail(string $employeMail): self
+    /**
+     * @param string $employeMail
+     */
+    public function setEmployeMail(string $employeMail): void
     {
         $this->employeMail = $employeMail;
-
-        return $this;
     }
 
-    public function getEmployeEtat(): ?string
-    {
-        return $this->employeEtat;
-    }
-
-    public function setEmployeEtat(string $employeEtat): self
-    {
-        $this->employeEtat = $employeEtat;
-
-        return $this;
-    }
-
+    /**
+     * @return string
+     */
     public function getEmployeLogin(): ?string
     {
         return $this->employeLogin;
     }
 
-    public function setEmployeLogin(string $employeLogin): self
+    /**
+     * @param string $employeLogin
+     */
+    public function setEmployeLogin(string $employeLogin): void
     {
         $this->employeLogin = $employeLogin;
-
-        return $this;
     }
 
+    /**
+     * @return string
+     */
     public function getEmployeMdp(): ?string
     {
         return $this->employeMdp;
     }
 
-    public function setEmployeMdp(string $employeMdp): self
+    /**
+     * @param string $employeMdp
+     */
+    public function setEmployeMdp(string $employeMdp): void
     {
         $this->employeMdp = $employeMdp;
-
-        return $this;
     }
 
+    /**
+     * @return string
+     */
     public function getEmployeAdresse(): ?string
     {
         return $this->employeAdresse;
     }
 
-    public function setEmployeAdresse(string $employeAdresse): self
+    /**
+     * @param string $employeAdresse
+     */
+    public function setEmployeAdresse(string $employeAdresse): void
     {
         $this->employeAdresse = $employeAdresse;
-
-        return $this;
     }
 
+    /**
+     * @return int
+     */
     public function getEmployeCp(): ?int
     {
         return $this->employeCp;
     }
 
-    public function setEmployeCp(int $employeCp): self
+    /**
+     * @param int $employeCp
+     */
+    public function setEmployeCp(int $employeCp): void
     {
         $this->employeCp = $employeCp;
-
-        return $this;
     }
 
+    /**
+     * @return string
+     */
     public function getEmployeVille(): ?string
     {
         return $this->employeVille;
     }
 
-    public function setEmployeVille(string $employeVille): self
+    /**
+     * @param string $employeVille
+     */
+    public function setEmployeVille(string $employeVille): void
     {
         $this->employeVille = $employeVille;
-
-        return $this;
     }
 
-    public function getEmployeStatut(): ?string
+    /**
+     * @return StatutEmployes
+     */
+    public function getStatutEmploye(): ?StatutEmployes
     {
-        return $this->employeStatut;
+        return $this->StatutEmploye;
     }
 
-    public function setEmployeStatut(string $employeStatut): self
+    /**
+     * @param StatutEmployes $StatutEmploye
+     */
+    public function setStatutEmploye(StatutEmployes $StatutEmploye): void
     {
-        $this->employeStatut = $employeStatut;
-
-        return $this;
+        $this->StatutEmploye = $StatutEmploye;
     }
 
-    public function getRole(): ?string
+
+    public function getUsername(): string
     {
-        return $this->role;
+        return $this->employeLogin;
     }
 
-    public function setRole(string $role): self
+    public function setUsername(string $employeLogin): void
     {
-        $this->role = $role;
-
-        return $this;
+        $this->employeLogin = $employeLogin;
     }
 
-    public function getIdStatutemploye(): ?int
+    /**
+     * Retourne les rôles de l'user
+     */
+    public function getRoles(): array
     {
-        return $this->idStatutemploye;
+        $roles = $this->roles;
+
+        // Afin d'être sûr qu'un user a toujours au moins 1 rôle
+        if (empty($roles)) {
+            $roles[] = 'ROLE_USER';
+        }
+
+        return array_unique($roles);
     }
 
-    public function setIdStatutemploye(int $idStatutemploye): self
+    public function setRoles(array $roles): void
     {
-        $this->idStatutemploye = $idStatutemploye;
+        $this->roles = $roles;
+    }
 
-        return $this;
+    /**
+     * Retour le salt qui a servi à coder le mot de passe
+     *
+     * {@inheritdoc}
+     */
+    public function getSalt(): ?string
+    {
+        // See "Do you need to use a Salt?" at https://symfony.com/doc/current/cookbook/security/entity_provider.html
+        // we're using bcrypt in security.yml to encode the password, so
+        // the salt value is built-in and you don't have to generate one
+
+        return null;
+    }
+
+    /**
+     * Removes sensitive data from the user.
+     *
+     * {@inheritdoc}
+     */
+    public function eraseCredentials(): void
+    {
+        // Nous n'avons pas besoin de cette methode car nous n'utilions pas de plainPassword
+        // Mais elle est obligatoire car comprise dans l'interface UserInterface
+        // $this->plainPassword = null;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function serialize(): string
+    {
+        return serialize([$this->idEmploye, $this->employeLogin, $this->employeMdp]);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function unserialize($serialized): void
+    {
+        [$this->idEmploye, $this->employeLogin, $this->employeMdp] = unserialize($serialized, ['allowed_classes' => false]);
     }
 
 
-
-
+    /**
+     * Returns the password used to authenticate the user.
+     *
+     * This should be the encoded password. On authentication, a plain-text
+     * password will be salted, encoded, and then compared to this value.
+     *
+     * @return string The password
+     */
+    public function getPassword()
+    {
+        // TODO: Implement getPassword() method.
+        return $this->employeMdp;
+    }
 }

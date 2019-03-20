@@ -58,6 +58,7 @@ class Employes implements UserInterface, \Serializable
      */
     private $login;
 
+
     /**
      * @var string
      *
@@ -101,6 +102,7 @@ class Employes implements UserInterface, \Serializable
      */
     private $StatutEmploye;
 
+
     /**
      * @return int
      */
@@ -136,6 +138,7 @@ class Employes implements UserInterface, \Serializable
     /**
      * @return string
      */
+
     public function getEmployePrenom(): ?string
     {
         return $this->employePrenom;
@@ -184,6 +187,7 @@ class Employes implements UserInterface, \Serializable
     /**
      * @return string
      */
+
     public function getLogin(): ?string
     {
         return $this->login;
@@ -197,9 +201,11 @@ class Employes implements UserInterface, \Serializable
         $this->login = $login;
     }
 
+
     /**
      * @return string
      */
+
     public function getEmployeMdp(): ?string
     {
         return $this->employeMdp;
@@ -364,4 +370,38 @@ class Employes implements UserInterface, \Serializable
         // TODO: Implement getPassword() method.
         return $this->employeMdp;
     }
+
+    /**
+     * @return string
+     */
+    public function getEmployeStatut(): string
+    {
+        return $this->employeStatut;
+    }
+
+    /**
+     * @param string $employeStatut
+     */
+    public function setEmployeStatut(string $employeStatut): void
+    {
+        $this->employeStatut = $employeStatut;
+    }
+
+    /**
+     * @return string
+     */
+    public function getRole(): string
+    {
+        return $this->role;
+    }
+
+    /**
+     * @param string $role
+     */
+    public function setRole(string $role): void
+    {
+        $this->role = $role;
+    }
+
+
 }

@@ -10,10 +10,10 @@
                 <a style="width: 25px; text-align: right" href="{{ url('app_logout') }}"><img src="{{ asset('assets/images/iconLogout.svg') }}"></a>
             </div>
             <img style="width: 100px" src="{{ asset('assets/images/Logo_VTC.png') }}">
-            <h1>Bonjour {{ user.employePrenom }} !</h1>
+            <h1>Bonjour [] !</h1>
             <div>
                 <p>Vous êtes actuellement
-                    <select id="mySelectStatut" onchange="statutChange()">
+                    <select id="mySelectStatut">
                         <option value="1">En ligne</option>
                         <option value="2">En course</option>
                         <option value="3" onclick="enPauseCheck()">En pause</option>
@@ -39,56 +39,15 @@
         </form>
         </div>
     </div>
-    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
     <script>
         document.getElementById("mySelectStatut").value = {{ user.StatutEmploye.idStatutemploye }}
-        statutChange();
-        function statutChange(){
-
-            $.ajax({
-                url: {{ url('updateStatus', {id:document.getElementById("mySelectStatut").value}) }},
-                method: "GET",
-                dataType: "json",
-                success: function(data){
-
-                }
-            });
-
-            if(document.getElementById("mySelectStatut").value == 1){
-
-                document.getElementById('codeClient').disabled = false;
-                document.getElementById("btnValiderCode").disabled = false;
-                document.getElementById("btnValiderCourse").disabled = true;
-                document.getElementById("mySelectStatut").disabled = false;
-            }
-            else if(document.getElementById("mySelectStatut").value == 3){
-                document.getElementById("codeClient").disabled = true;
-                document.getElementById("btnValiderCode").disabled = true;
-                document.getElementById("btnValiderCourse").disabled = true;
-                document.getElementById("mySelectStatut").disabled = false;
-            }
-            else if(document.getElementById("mySelectStatut").value == 4){
-                document.getElementById("codeClient").disabled = true;
-                document.getElementById("btnValiderCode").disabled = true;
-                document.getElementById("btnValiderCourse").disabled = true;
-                document.getElementById("mySelectStatut").disabled = false;
-            }
-        }
-
         function codeClientCheck(){
             if(document.getElementById("mySelectAdresse").value == document.getElementById('codeClient').value){
                 document.getElementById("mySelectStatut").value = 2
-                document.getElementById("codeClient").disabled = true;
-                document.getElementById("btnValiderCode").disabled = true;
-                document.getElementById("btnValiderCourse").disabled = false;
-                document.getElementById("mySelectStatut").disabled = true;
             }
             else
                 alert('Erreur code client')
-        }
-
-        function FinCourseCheck() {
-            document.getElementById("mySelectStatut").disabled = true;
         }
     </script>
 

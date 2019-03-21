@@ -11,6 +11,7 @@ namespace App\Controller;
 
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
@@ -39,10 +40,16 @@ class ChauffeurController extends AbstractController
      */
     public function updateStatusAction($id, EntityManagerInterface $em)
     {
-        echo '<script>alert("OK");</script>';
         $user = $this->getUser();
-        $employe = $em->getRepository('App:Employes')->findOneBy($user->getIdEmploye());
-        $employe->setStatutEmploye($id);
+        $id1 = $user->getIdEmploye();
+        echo '<script>alert('.$id.');</script>';
+        $employe = $em->getRepository('App:Employes')->find($user->getIdEmploye());
+        $statE = $em->getRepository('App:StatutEmployes')->find($id);
+        $employe->setStatutEmploye($statE);
+        $em->persist($employe);
+        $em->flush();
+
+        return new JsonResponse(array("response"=>"ok"));
     }
 
     /**
@@ -79,3 +86,5 @@ class ChauffeurController extends AbstractController
         throw new \Exception('Unexpected logout action');
     }
 }
+
+//Faire un script de BDD peuplement / dans un sql faire des requetes et commenter le resultat attendu

@@ -10,7 +10,7 @@
                 <a style="width: 25px; text-align: right" href="{{ url('app_logout') }}"><img src="{{ asset('assets/images/iconLogout.svg') }}"></a>
             </div>
             <img style="width: 100px" src="{{ asset('assets/images/Logo_VTC.png') }}">
-            <h1>Bonjour [] !</h1>
+            <h1>Bonjour {{ user.employePrenom }} !</h1>
             <div>
                 <p>Vous êtes actuellement
                     <select id="mySelectStatut">
@@ -19,13 +19,16 @@
                         <option value="3" onclick="enPauseCheck()">En pause</option>
                         <option value="4" onclick="horsligneCheck()">Hors ligne</option>
                     </select>
+                    <form>
+                        <input id="btnChangerStatus" type="button" value="Changer statut" onclick="myChangeStatus()">
+                    </form>
                 </p>
             </div>
             <p>Missions disponibles ({{ nbCourses }})
                 <select id="mySelectAdresse">
                     {% set i = 1 %}
                     {% for course in courses %}
-                        <option value="{{ course.idFacture.courseNumtransaction }}">{{ course.idAdressedepart.adresseAdresse }}</option>
+                        <option value="{{ course.courseNumtransaction }}">{{ course.idAdressedepart.adresseAdresse }}</option>
                         {% set i = i + 1 %}
                     {% endfor %}
                 </select>
@@ -35,20 +38,67 @@
                 <input style="width: 250px" type="submit" id="btnValiderCode" value="Valider" onclick="codeClientCheck()">
             </form>
             <form>
-                <input id="btnValiderCourse" type="button" value="Finir course" onclick="FinCourseCheck()">
-        </form>
+                <input id="btnValiderCourse" type="button" value="Finir course" onclick="endCourseCheck()">
+            </form>
         </div>
     </div>
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    {#<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>#}
     <script>
-        document.getElementById("mySelectStatut").value = {{ user.StatutEmploye.idStatutemploye }}
+        document.getElementById("mySelectStatut").value = {{ user.StatutEmploye.idStatutemploye }};
+        document.getElementById('btnValiderCourse').disabled = true;
+        document.getElementById('btnValiderCourse').style.backgroundColor = 'grey';
+
         function codeClientCheck(){
+            let myId =2;
             if(document.getElementById("mySelectAdresse").value == document.getElementById('codeClient').value){
-                document.getElementById("mySelectStatut").value = 2
+                $.ajax({
+                    async:"true",
+                    type: "POST",
+                    url: "{{ path('updateStatus') }}",
+                    data: {'idStatus':myId},
+                    dataType: "json",
+                });
+                document.getElementById("mySelectStatut").value = 2;
+                document.getElementById('codeClient').disabled = true;
+                document.getElementById('codeClient').style.color = 'grey';
+                document.getElementById('btnValiderCode').disabled = true;
+                document.getElementById('btnValiderCode').style.backgroundColor = 'grey';
+                document.getElementById('btnValiderCourse').disabled = false;
+                document.getElementById('btnValiderCourse').style.backgroundColor = '#39ace7';
             }
-            else
-                alert('Erreur code client')
+            else {
+                alert('Erreur code client');
+            }
         }
+
+        function myChangeStatus(){
+            let myId = document.getElementById("mySelectStatut").value;
+            $.ajax({
+                async:"true",
+                type: "POST",
+                url: "{{ path('updateStatus') }}",
+                data: {'idStatus':myId},
+                dataType: "json",
+            });
+        }
+
+        function endCourseCheck() {
+            let myId = document.getElementById("mySelectStatut").value = 1;
+            $.ajax({
+                async:"true",
+                type: "POST",
+                url: "{{ path('updateStatus') }}",
+                data: {'idStatus':myId},
+                dataType: "json",
+            });
+            document.getElementById('codeClient').disabled = false;
+            document.getElementById('codeClient').value = "";
+            document.getElementById('codeClient').style.color = 'black';
+            document.getElementById('btnValiderCode').disabled = false;
+            document.getElementById('btnValiderCode').style.backgroundColor = '#39ace7';
+        }
+
     </script>
 
 {% endblock %}

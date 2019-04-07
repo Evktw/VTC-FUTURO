@@ -44,6 +44,12 @@ class StatutEmployes
 
         return $this;
     }
+    public function setIdStatutEmploye(int $idStatutemploye): self
+    {
+        $this->idStatutemploye = $idStatutemploye;
+
+        return $this;
+    }
 
 
 

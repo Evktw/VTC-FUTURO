@@ -61,7 +61,7 @@ class Employes implements UserInterface, \Serializable
     /**
      * @var string
      *
-     * @ORM\Column(name="Employe_mdp", type="string", length=50, nullable=false)
+     * @ORM\Column(name="Employe_mdp", type="string", length=250, nullable=false)
      */
     private $employeMdp;
 
@@ -96,7 +96,7 @@ class Employes implements UserInterface, \Serializable
     /**
      * @var StatutEmployes
      *
-     * @ORM\OneToOne(targetEntity="StatutEmployes",cascade={"persist"})
+     * @ORM\ManyToOne(targetEntity="StatutEmployes")
      * @ORM\JoinColumn(name="ID_StatutEmploye", referencedColumnName="ID_StatutEmploye")
      */
     private $StatutEmploye;

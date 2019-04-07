@@ -10,7 +10,9 @@ namespace App\Controller;
 
 
 use Doctrine\ORM\EntityManagerInterface;
+use http\Url;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -36,20 +38,20 @@ class ChauffeurController extends AbstractController
     }
 
     /**
-     * @Route("/chauffeur/updateStatus/{id}", requirements={"id": "\d+"}, name="updateStatus")
+     * @Route("/chauffeur/updateStatus", name="updateStatus")
      */
-    public function updateStatusAction($id, EntityManagerInterface $em)
+    public function updateStatusAction(EntityManagerInterface $em, Request $request)
     {
+        $id = $request->request->get('idStatus');
         $user = $this->getUser();
-        $id1 = $user->getIdEmploye();
-        echo '<script>alert('.$id.');</script>';
-        $employe = $em->getRepository('App:Employes')->find($user->getIdEmploye());
-        $statE = $em->getRepository('App:StatutEmployes')->find($id);
-        $employe->setStatutEmploye($statE);
-        $em->persist($employe);
+        $employee = $em->getRepository('App:Employes')->find($user->getIdEmploye());
+        $StatusEmployee = $em->getRepository('App:StatutEmployes')->findOneByidStatutemploye($id);
+        //echo "<script>alert(.$employee.)</script>";
+        $employee->setStatutEmploye($StatusEmployee);
+        $em->persist($employee);
         $em->flush();
 
-        return new JsonResponse(array("response"=>"ok"));
+        return new JsonResponse('update status ok');
     }
 
     /**
